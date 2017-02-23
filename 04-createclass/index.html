@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="../build/react.js"></script>
+    <script src="../build/react-dom.js"></script>
+    <script src="../build/browser.min.js"></script>
+</head>
+<body>
+
+    <div id="example"></div>
+
+    <script type="text/babel">
+
+        //class 的定义首字母一定要大写
+
+        var Hello = React.createClass({
+            render: function() {
+                return <h1>hello {this.props.name}</h1>;
+            }
+        });
+
+        ReactDOM.render(
+                <Hello name="Aaron"/>,
+            document.getElementById("example")
+        );
+
+    </script>
+</body>
+</html>
