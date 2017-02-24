@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="../build/react.js"></script>
+    <script src="../build/react-dom.js"></script>
+    <script src="../build/browser.min.js"></script>
+</head>
+<body>
+
+<div id="example"></div>
+
+<script type="text/babel">
+
+    var AnswerButton = React.createClass({
+        getInitialState: function() {
+            return {
+                answer: false
+            };
+        },
+
+        handleClick: function(event) {
+          this.setState({
+             answer : !this.state.answer
+          });
+        },
+
+        render: function() {
+            var text = this.state.answer ? 'yes' : 'no';
+
+            return (
+                <p onClick={this.handleClick}>
+                    Your answer is {text} . (Click to toggle!!!)
+                </p>
+            );
+        }
+    });
+
+
+    ReactDOM.render(
+        <AnswerButton />,
+        document.getElementById("example")
+
+    );
+</script>
+</body>
+</html>

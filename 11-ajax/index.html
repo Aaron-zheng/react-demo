@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="../build/react.js"></script>
+    <script src="../build/react-dom.js"></script>
+    <script src="../build/browser.min.js"></script>
+    <script src="../build/jquery.min.js"></script>
+</head>
+<body>
+
+
+<div id="example"></div>
+
+<script type="text/babel">
+    var GitInfo = React.createClass({
+        getInitialState: function () {
+
+            return {
+                userName: '',
+                lastUrl: ''
+            };
+        },
+
+        componentDidMount: function () {
+
+            $.get(this.props.source, function(result){
+
+                var r = result[0];
+
+                if(this.isMounted()){
+                    this.setState({
+                        userName: r.owner.login,
+                        lastUrl: r.html_url
+                    });
+                }
+
+            }.bind(this));
+
+
+        },
+
+
+        render: function () {
+            return (
+                <div>
+                <p>Username: {this.state.userName}</p>
+                <p>URL: {this.state.lastUrl}</p>
+                </div>
+            );
+        }
+
+    });
+
+    ReactDOM.render(
+        <GitInfo source="https://api.github.com/users/octocat/gists" />,
+
+        document.getElementById("example")
+    );
+
+
+</script>
+</body>
+</html>
