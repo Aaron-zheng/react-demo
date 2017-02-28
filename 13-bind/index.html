@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="../build/react.js"></script>
+    <script src="../build/react-dom.js"></script>
+    <script src="../build/browser.min.js"></script>
+</head>
+<body>
+
+<div id="example"></div>
+
+<script type="text/javascript">
+
+    this.x = 9;
+
+    var module = {
+        x: 81,
+        getX: function () {
+            return this.x;
+        }
+    };
+
+    var retrieveX = module.getX;
+
+    var boundX = retrieveX.bind(module);
+
+</script>
+
+<script type="text/babel">
+
+    var BindButton = React.createClass({
+        getInitialState: function() {
+            return {
+
+
+            };
+        },
+
+
+        render: function() {
+            return (
+                <div>
+                    <div>{module.getX()}</div>
+                    <div>{retrieveX()}</div>
+                    <div>{boundX()}</div>
+                </div>
+            );
+        }
+    });
+
+
+    ReactDOM.render(
+            <BindButton />,
+        document.getElementById("example")
+
+    );
+</script>
+</body>
+</html>

@@ -49,3 +49,7 @@ React 的 Class 可以定义 proptypes 来验证参数。
 ## 12-promise
 
 使用 promise 进行异步调用处理。
+
+## 13-bind
+
+使用 bind 来控制 this 传递进来。
